@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerador de QR codes · Menu</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link rel="stylesheet" href="css/qrcode.css">
+</head>
+<body>
+<h1>QR codes do menu</h1>
+
+<div class="panel">
+  <label for="url">Endereço (URL) onde o menu está publicado</label>
+  <input id="url" type="url" placeholder="https://cafeexemplo.pt/menu/" value="">
+  <small>Primeiro publica o <b>index.html</b> (ver instruções) e cola aqui o endereço final.</small>
+
+  <div class="row">
+    <div><label for="n">Número de mesas</label><input id="n" type="number" min="0" max="200" value="10"></div>
+    <div><label for="nome">Nome no cartão</label><input id="nome" value="Café Exemplo"></div>
+  </div>
+  <small>Com 0 mesas gera um único QR geral (sem número de mesa).</small>
+
+  <button id="go">Gerar QR codes</button>
+  <button class="sec" onclick="window.print()">Imprimir</button>
+</div>
+
+<div id="grid"></div>
+
+<script src="js/qrcode.js"></script>
+</body>
+</html>

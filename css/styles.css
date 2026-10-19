@@ -1,0 +1,74 @@
+/* Gelataria Tre Santi — Viseu
+   Paleta retirada do logótipo e da loja:
+   magenta / azul / verde (faixas), cinzento "Santi", turquesa e mostarda (cadeiras) */
+:root {
+  color-scheme: light;
+  --bg: #f7f5f1; --card: #ffffff; --text: #3b3c3e; --muted: #6b6d70;   /* branco-pérola, cinzento "Santi" */
+  --accent: #a8387f;            /* magenta do logótipo */
+  --magenta: #a8387f; --blue: #1b8fc4; --green: #5f9f1f;
+  --teal: #1a9bb0; --mustard: #e8a920;
+  --line: #e6e2da; --chip: #efece6;
+  --serif: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+}
+/* Tema escuro: só quando ativado (html[data-theme="dark"]), nunca por defeito */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1c1d1f; --card: #26272a; --text: #eceded; --muted: #a2a4a8;
+  --accent: #d65aa6; --magenta: #d65aa6; --blue: #3ab0e6; --green: #86cc3c;
+  --teal: #3cc0d4; --mustard: #f2bd3d;
+  --line: #38393d; --chip: #303135;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text);
+       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.4; }
+
+/* Cabeçalho — faixas tricolores como no logótipo */
+header { position: relative; padding: 34px 20px 18px; text-align: center; background: var(--card); }
+header::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 9px;
+  background: linear-gradient(to right, var(--magenta) 0 33.33%, var(--blue) 33.33% 66.66%, var(--green) 66.66% 100%); }
+header h1 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 2.3rem;
+            letter-spacing: 1px; color: var(--text); }
+header p { margin: 2px 0 0; color: var(--muted); font-family: var(--serif);
+           font-size: .95rem; letter-spacing: 3px; text-transform: lowercase; }
+.mesa { display: inline-block; margin-top: 12px; padding: 4px 14px; border-radius: 99px;
+        background: var(--teal); color: #fff; font-size: .8rem; font-weight: 600; }
+
+/* Pesquisa + navegação */
+.sticky { position: sticky; top: 0; z-index: 10; background: var(--bg);
+          border-bottom: 3px solid transparent;
+          border-image: linear-gradient(to right, var(--magenta) 0 33.33%, var(--blue) 33.33% 66.66%, var(--green) 66.66% 100%) 1;
+          padding: 10px 0 8px; }
+.search { margin: 0 16px 8px; }
+.search input { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line);
+                background: var(--card); color: var(--text); font-size: 1rem; }
+.search input:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+nav { display: flex; gap: 8px; overflow-x: auto; padding: 0 16px; scrollbar-width: none; }
+nav::-webkit-scrollbar { display: none; }
+nav button { flex: none; border: 0; padding: 8px 14px; border-radius: 99px; background: var(--chip);
+             color: var(--text); font-size: .9rem; cursor: pointer; }
+nav button.active { background: var(--teal); color: #fff; }
+
+/* Lista do menu */
+main { max-width: 640px; margin: 0 auto; padding: 8px 16px 40px; }
+section { padding-top: 20px; scroll-margin-top: 110px; }
+section h2 { margin: 0 0 12px; padding-left: 12px; font-family: var(--serif); font-weight: 500;
+             font-size: 1.4rem; color: var(--text); border-left: 6px solid var(--magenta); }
+section:nth-of-type(3n+2) h2 { border-left-color: var(--blue); }
+section:nth-of-type(3n+3) h2 { border-left-color: var(--green); }
+.item { background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+        padding: 12px 14px; margin-bottom: 10px; display: flex; gap: 12px; justify-content: space-between; }
+.item h3 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: 1.05rem; }
+.item p { margin: 2px 0 0; color: var(--muted); font-size: .85rem; }
+.price { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; color: var(--magenta); white-space: nowrap; }
+section:nth-of-type(3n+2) .price { color: var(--blue); }
+section:nth-of-type(3n+3) .price { color: var(--green); }
+.tag { display: inline-block; margin: 6px 6px 0 0; padding: 1px 8px; border-radius: 99px;
+       background: var(--chip); font-size: .72rem; color: var(--muted); }
+.item.out { opacity: .5; }
+.item.out .price { text-decoration: line-through; }
+
+/* Estados */
+.empty { text-align: center; color: var(--muted); padding: 40px 0; display: none; }
+footer { text-align: center; color: var(--muted); font-size: .8rem; padding: 0 20px 30px;
+         font-family: var(--serif); letter-spacing: .5px; }
